@@ -1,0 +1,17 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.footer {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px 0;
+    text-align: center;
+}

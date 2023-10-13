@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Resource Management</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="https://media.discordapp.net/attachments/970249904981176380/1108436757512458310/Shafat-TRansparent_1.png?ex=653947ac&is=6526d2ac&hm=6a3b961c1cd79f55c28867f3832181160403c2264ed0686e29f9420b273a8dad&=&width=663&height=671" type="image/x-icon">
+    <link rel="shortcut icon"
+        href="https://media.discordapp.net/attachments/970249904981176380/1108436757512458310/Shafat-TRansparent_1.png?ex=653947ac&is=6526d2ac&hm=6a3b961c1cd79f55c28867f3832181160403c2264ed0686e29f9420b273a8dad&=&width=663&height=671"
+        type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img
+                src="https://media.discordapp.net/attachments/970249904981176380/1108436757512458310/Shafat-TRansparent_1.png?ex=653947ac&is=6526d2ac&hm=6a3b961c1cd79f55c28867f3832181160403c2264ed0686e29f9420b273a8dad&=&width=663&height=671"
+                width="30" height="30" class="d-inline-block align-top" alt="">
+            Resource Management
+        </a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="container mt-5">
         <h1 class="mb-4">Resource Management</h1>
         <div class="row">
@@ -16,11 +35,11 @@
                         <h2 class="card-title">Create Resource</h2>
                         <form id="createResourceForm">
                             <div class="form-group">
-                                <label for="key">Resource Key:</label>
+                                <label for "key">Resource Key:</label>
                                 <input type="text" class="form-control" id="key" name="key" required>
                             </div>
                             <div class="form-group">
-                                <label for="value">Resource Value:</label>
+                                <label for "value">Resource Value:</label>
                                 <input type="text" class="form-control" id="value" name="value" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Create Resource</button>
@@ -28,20 +47,50 @@
                     </div>
                 </div>
             </div>
-            <!-- Display Resource Data -->
+
+            <!-- Delete Resource Form -->
             <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2 class="card-title">Delete Resource</h2>
+                        <form id="deleteResourceForm">
+                            <div class="form-group">
+                                <label for "deleteKey">Resource Key to Delete:</label>
+                                <input type="text" class="form-control" id="deleteKey" name="deleteKey" required>
+                            </div>
+                            <button type="button" class="btn btn-danger" id="deleteResourceButton">Delete Resource</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="statusMessage" class="mt-5"></div>
+            </div>
+        </div>
+
+        <!-- Display Resource Data -->
+        <div class="row mt-3">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">Resource Data</h2>
-                        <div id="resourceData"></div>
+                        <div class="resource-data-container">
+                            <div id="resourceData"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer class="footer mt-3">
+        <div class="container">
+            <span class="text-muted">© 2023 Shafat 21</span>
+        </div>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

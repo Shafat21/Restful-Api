@@ -8,6 +8,10 @@
   },
   "author": "Shafat Alam",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shafat21/Restful-Api.git"
+  },
   "dependencies": {
     "express": "^4.18.2",
     "mysql2": "^3.6.1",

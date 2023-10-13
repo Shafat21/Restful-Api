@@ -5,8 +5,8 @@ const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
+const server = "http://localhost:";
 
-// Create a database connection
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -14,21 +14,16 @@ const db = mysql.createConnection({
     database: 'restapiexpress', // Use the correct database name you created
 });
 
-// Connect to the database
 db.connect((err) => {
     if (err) {
         console.error('Error connecting to database: ' + err);
         return;
     }
-    console.log('Connected to the database');
+    console.log('Connected to the SQL Database');
 });
 
-// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// REST API routes
-
-// GET method to retrieve data
 app.get('/api/resource', (req, res) => {
     db.query('SELECT * FROM resources', (err, results) => {
         if (err) {
@@ -43,7 +38,6 @@ app.get('/api/resource', (req, res) => {
     });
 });
 
-// POST method to create a resource
 app.post('/api/resource/:key', (req, res) => {
     const key = req.params.key;
     const value = req.body.value;
@@ -59,7 +53,6 @@ app.post('/api/resource/:key', (req, res) => {
     });
 });
 
-// PUT method to update a resource
 app.put('/api/resource/:key', (req, res) => {
     const key = req.params.key;
     const value = req.body.value;
@@ -77,7 +70,6 @@ app.put('/api/resource/:key', (req, res) => {
     });
 });
 
-// DELETE method to delete a resource
 app.delete('/api/resource/:key', (req, res) => {
     const key = req.params.key;
     db.query('DELETE FROM resources WHERE key_name = ?', [key], (err, results) => {
@@ -93,5 +85,5 @@ app.delete('/api/resource/:key', (req, res) => {
 
 const port = 3000;
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}. Open ${server}${port}/`);
 });
