@@ -13,6 +13,7 @@
 The **Resource Management RESTful API** is a simple yet powerful tool for managing resources using a RESTful interface. It provides the basic functionality required for creating, reading, updating, and deleting resources with unique keys. This API utilizes a MySQL database for resource storage, making it a versatile solution for data management in various applications.
 
 ![Screenshot](https://media.discordapp.net/attachments/970249904981176380/1162082268009996379/WhatsApp_Image_2023-10-12_at_23.36.50_2a7a6049.jpg)
+![Screenshot](https://cdn.discordapp.com/attachments/970249904981176380/1162400861662752879/image.png?ex=653bcd29&is=65295829&hm=4ccd75ab863b1b77f39304981cb6db81a20aba8f0ddfb6589a56befaed7a596e&)
 
 ## Features
 
