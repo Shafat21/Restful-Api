@@ -86,18 +86,19 @@ app.delete('/api/resource/:key', (req, res) => {
 });
 app.post('/api/signup', (req, res) => {
     const { email, password, confirmPassword } = req.body;
+    const saltRounds = 10;
 
     if (password !== confirmPassword) {
         return res.status(400).json({ message: 'Password and confirm password do not match' });
     }
 
-    bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.genSalt(saltRounds, function(err, salt) {
         if (err) {
             console.error('Error generating salt: ' + err);
             return res.status(500).json({ message: 'Internal server error' });
         }
 
-        bcrypt.hash(password, salt, (err, hashedPassword) => {
+        bcrypt.hash(password, salt, function(err, hashedPassword) {
             if (err) {
                 console.error('Error hashing password: ' + err);
                 return res.status(500).json({ message: 'Internal server error' });
