@@ -4,7 +4,8 @@
   "description": "An Application for Restful API",
   "main": "server.js",
   "scripts": {
-    "test": "node server.js"
+    "test": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Shafat Alam",
   "license": "ISC",
@@ -13,8 +14,10 @@
     "url": "https://github.com/Shafat21/Restful-Api.git"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.18.2",
     "mysql2": "^3.6.1",
+    "nodemon": "^3.0.1",
     "path": "^0.12.7"
   }
 }
