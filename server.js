@@ -1,3 +1,4 @@
+const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
@@ -5,7 +6,12 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 
 const app = express();
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 app.use(bodyParser.json());
+
 const server = "http://localhost:";
 
 const db = mysql.createConnection({
@@ -24,7 +30,6 @@ db.connect((err) => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.get('/api/resource', (req, res) => {
     db.query('SELECT * FROM resources', (err, results) => {
@@ -84,13 +89,16 @@ app.delete('/api/resource/:key', (req, res) => {
         }
     });
 });
+
 app.post('/api/signup', (req, res) => {
     const { email, password, confirmPassword } = req.body;
     const saltRounds = 10;
 
+    // console.log(req);
     if (password !== confirmPassword) {
         return res.status(400).json({ message: 'Password and confirm password do not match' });
     }
+    // console.log('Password: ' + password);
 
     bcrypt.genSalt(saltRounds, function(err, salt) {
         if (err) {
@@ -98,13 +106,13 @@ app.post('/api/signup', (req, res) => {
             return res.status(500).json({ message: 'Internal server error' });
         }
 
-        bcrypt.hash(password, salt, function(err, hashedPassword) {
+        bcrypt.hash(password, salt, function(err, hash) {
             if (err) {
                 console.error('Error hashing password: ' + err);
                 return res.status(500).json({ message: 'Internal server error' });
             }
 
-            db.query('INSERT INTO users (email, password) VALUES (?, ?)', [email, hashedPassword], (err, result) => {
+            db.query('INSERT INTO users (email, password) VALUES (?, ?)', [email, hash], (err, result) => {
                 if (err) {
                     console.error('Database error: ' + err);
                     return res.status(500).json({ message: 'Database error' });
